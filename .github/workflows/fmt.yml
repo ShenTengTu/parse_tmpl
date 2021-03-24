@@ -1,0 +1,16 @@
+name: fmt
+on: [push, pull_request]
+jobs:
+  format:
+    name: Code formatting 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up V version latest
+      uses: nocturlab/setup-vlang-action@v1
+      with:
+        v-version: latest
+      id: v
+    - name: Format V codes
+      run: v -w fmt ./
