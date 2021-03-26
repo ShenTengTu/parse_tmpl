@@ -2,11 +2,17 @@ module lib
 
 import regex { regex_opt }
 
-// a Struct representing  an V attribute
+// a struct representing  an V attribute
 struct Attr {
 pub:
 	name string
 	msg  string
+}
+
+// Add the attribute to a dictionary.
+// The dictionary would have a pair (`Attr.name`,`Attr.msg`).
+pub fn (attr Attr) add_to_map(mut m map[string]string) {
+	m[attr.name] = attr.msg
 }
 
 // Parse specific V attribute text to `Attr` struct.

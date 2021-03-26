@@ -29,4 +29,9 @@ fn test_parse_attr() {
 	attr = parse_attr(name, text)
 	assert attr.name == 'view'
 	assert attr.msg == 'other/path'
+	// update Attr to the map
+	mut m := map[string]string{}
+	attr.add_to_map(mut m)
+	assert 'view' in m
+	assert m['view'] == 'other/path'
 }
